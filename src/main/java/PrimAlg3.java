@@ -2,46 +2,6 @@ import java.io.*;
 import java.util.*;
 
 public class PrimAlg3 {
-    // ребра (куда, вес) + можно сравнивать
-    static class Edge implements Comparable<Edge> {
-        int to, weight;
-
-        public Edge(int to, int weight) {
-            this.to = to;
-            this.weight = weight;
-        }
-
-        @Override
-        public int compareTo(Edge o) {
-            return Integer.compare(this.weight, o.weight);
-        }
-    }
-
-    // граф(сколько вершин, матрица смежности)
-    static class Graph {
-        int V;
-        List<List<Edge>> adj;
-
-        public Graph(int V) {
-            this.V = V;
-            this.adj = new ArrayList<>(V);
-            for (int i = 0; i < V; i++) adj.add(new ArrayList<>());
-        }
-
-        // для ввода данных
-        void addEdge(int u, int v, int w) {
-            adj.get(u).add(new Edge(v, w));
-            adj.get(v).add(new Edge(u, w));
-        }
-
-        // для вывода
-        int countEdges() {
-            int count = 0;
-            for (List<Edge> list : adj) count += list.size();
-            return count / 2; // неориентированный граф
-        }
-    }
-
     // класс результата для вывода
     static class Result {
         long timeNs;

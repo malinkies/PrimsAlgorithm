@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Graph {
-    int V;
-    List<List<Edge>> adj;
+    int V; // кол-во вершин
+    List<List<Edge>> adj; // матрица смежности
 
     public Graph(int V) {
         this.V = V;

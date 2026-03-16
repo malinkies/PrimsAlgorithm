@@ -19,12 +19,11 @@ public class PrimAlg3 {
     public static Result prim(Graph graph) {
         int V = graph.V;
         boolean[] visited = new boolean[V]; // посещенные вершины
-        PriorityQueue<Edge> pq = new PriorityQueue<>();
+        PriorityQueue<Edge> pq = new PriorityQueue<>(); // приоритетная очередь
 
         long startTime = System.nanoTime(); // замер времени
-
-        int res = 0; // сумма весов ребер
         int iterations = 0; // замер итераций
+        int res = 0; // сумма весов ребер
 
         // пусть первая вершина нулевая
         visited[0] = true;
@@ -35,16 +34,16 @@ public class PrimAlg3 {
 
         while (!pq.isEmpty()) {
             iterations++; // Подсчёт итераций
+
             Edge current = pq.poll(); // берем самое маленькое ребро
 
-            if (visited[current.to]) continue; // скип если оно уже посещено
+            if (visited[current.to]) continue; // скип вершину если оно уже посещено
 
             visited[current.to] = true; // посещаем
             res += current.weight; // добав к сумме
 
             for (Edge e : graph.adj.get(current.to)) { // добавляем новые возможности
                 if (!visited[e.to]) pq.add(new Edge(e.to, e.weight));
-
             }
         }
         long endTime = System.nanoTime(); // замер
@@ -60,6 +59,7 @@ public class PrimAlg3 {
         int V = Integer.parseInt(firstLine[0]);
         int E = Integer.parseInt(firstLine[1]);
 
+
         Graph graph = new Graph(V); // создаем граф
 
         // добавляем ребра в граф
@@ -70,6 +70,8 @@ public class PrimAlg3 {
             int w = Integer.parseInt(line[2]);
             graph.addEdge(u, v, w);
         }
+
+
         br.close();
         return graph;
     }

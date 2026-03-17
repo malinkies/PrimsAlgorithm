@@ -23,12 +23,12 @@ public class PrimAlg3 {
 
         long startTime = System.nanoTime(); // замер времени
         int iterations = 0; // замер итераций
+
         int res = 0; // сумма весов ребер
 
         // пусть первая вершина нулевая
         visited[0] = true;
         for (Edge e : graph.adj.get(0)) {
-            pq.add(new Edge(e.to, e.weight));
             pq.add(new Edge(e.to, e.weight));
         }
 
